@@ -1,0 +1,61 @@
+<style>
+  body{
+    background-image: url('../static/b.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 610px;
+    background-position:center;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+
+
+{%include 'nav.html'%}
+
+
+
+
+<body>
+  <br />
+    <h2 style=" margin-left: 100px; color: #9bb827;font-family: 'Times New Roman', Times, serif;">
+      <b>BROWSE YOUR AADHAR CARD</b>
+    </h2>
+    <br>
+
+  <div style="
+      width: 250px;
+      height: 25rem;
+      margin-left: 150px ;
+      color: black;
+      border-radius: 25px;
+      padding: 10px 10px;
+      font-weight: bold;">
+
+    
+
+
+    <form class="form-signin" method='POST' enctype='multipart/form-data' action= 'reg'>
+        <h2 class="h4 mb-3 font-weight-normal " style="color:lightblue; margin-left:-10px;"><b>Please Upload The Image</b></h2>
+        <input type="file" name="image" class="form-control-file" id="inputfile" onchange="preview_image(event)" style="font-weight: bold; margin-left:10px;">
+        <br>
+        <a href="{{url_for('cam')}}" > camera</a>
+        <img id="output-image" style="width: 200px; height: 15rem; border-color:none" class="rounded mx-auto d-block" />
+        <br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" style="font-weight: bold;">Predict</button>
+    </form>
+  </div>
+
+  <script type="text/javascript">
+    function preview_image(event) {
+      var reader = new FileReader();
+      reader.onload = function () {
+        var output = document.getElementById('output-image')
+        output.src = reader.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  </script>
+
+</body>
+</html>
